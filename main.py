@@ -67,7 +67,7 @@ def train(epoch):
         # print(target)
         optimizer.zero_grad()
         output = model(data)
-        criterion = torch.nn.CrossEntropyLoss(reduction='elementwise_mean')
+        criterion = torch.nn.CrossEntropyLoss(reduction='mean')
         loss = criterion(output, target)
         loss.backward()
         optimizer.step()
