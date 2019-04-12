@@ -2,7 +2,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torchvision.models import alexnet as torch_alexnet, resnet101 as torch_resnet101, vgg16 as torch_vgg16
 
-nclasses = 20
+nclasses = 200
 
 
 class SimpleCNN(nn.Module):
