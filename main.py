@@ -93,9 +93,6 @@ def validation(epoch):
         valid = pred.eq(target.data.view_as(pred)).cpu()
         wrong_images = np.argwhere(valid.numpy() == 0)[:, 0]
         correct += valid.sum()
-        if epoch > 15:
-            show_images(data, 5, indexes=wrong_images)
-            plt.show()
 
     validation_loss /= len(val_loader.dataset)
     print('\nValidation set: Average loss: {:.4f}, Accuracy: {}/{} ({:.0f}%)\n'.format(
