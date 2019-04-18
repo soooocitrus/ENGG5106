@@ -112,6 +112,7 @@ for epoch in range(1, args.epochs + 1):
     model_file = path + '/model.pth'
     torch.save(model.state_dict(), model_file)
     if epoch % 2 == 0:
+        os.mkdir(path + '/' + str(epoch))
         intermediate_model_file = path + '/' + str(epoch) + '/model.pth'
         torch.save(model.state_dict(), intermediate_model_file)
         print('\nSaved intermideate model to ' + intermediate_model_file + '. You can run `python main.py --load-model '+
