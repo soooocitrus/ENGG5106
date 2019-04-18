@@ -19,6 +19,11 @@ Download the training/validation/test images from [here](https://www.di.ens.fr/w
 #### Training and validating your model
 Run the script `main.py` to train your model.
 
+If you want to load existing model to continue training, find the checkpoint model path and run:
+```
+python main.py --path [checkpoint_model_file]
+```
+
 Modify `main.py`, `model.py` and `data.py` for your assignment, with an aim to make the validation score better.
 
 - By default the images are loaded and resized to 64x64 pixels and normalized to zero-mean and standard deviation of 1. See data.py for the `data_transforms`.
