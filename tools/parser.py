@@ -20,6 +20,8 @@ class Parser:
                                  help='how many batches to wait before logging training status')
         self.parser.add_argument('--experiment', type=str, default='experiment', metavar='E',
                                  help='folder where experiment outputs are located.')
+        self.parser.add_argument('--path', type=str, default=None, metavar='LM',
+                                 help='path where existing model is located. Usually it is of the form model_X.pth')
 
     def parse(self):
         return self.parser.parse_args()

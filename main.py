@@ -16,6 +16,10 @@ args = Parser().parse()
 use_cuda = torch.cuda.is_available()
 torch.manual_seed(args.seed)
 
+if args.path != None:
+    state_dict = torch.load(args.path)
+    model.load_state_dict(state_dict)
+
 # Create experiment folder
 if not os.path.isdir(args.experiment):
     os.makedirs(args.experiment)
@@ -107,6 +111,11 @@ for epoch in range(1, args.epochs + 1):
     validation(epoch)
     model_file = path + '/model.pth'
     torch.save(model.state_dict(), model_file)
+    if epoch % 2 == 0:
+        intermediate_model_file = path + '/' + str(epoch) + '/model.pth'
+        torch.save(model.state_dict(), intermediate_model_file)
+        print('\nSaved intermideate model to ' + intermediate_model_file + '. You can run `python main.py --load-model '+
+              intermediate_model_file + '` to load the unfinished training model')
     print(
         '\nSaved model to ' + model_file + '. You can run `python evaluate.py --model ' + model_file +
         '` to generate the Kaggle formatted csv file')
